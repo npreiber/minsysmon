@@ -17,7 +17,7 @@ conky.config = {
 	    own_window = true,
       own_window_type = 'dock',
       own_window_argb_visual = true,
-      own_window_argb_value = 0,
+      own_window_argb_value = 220,
 	    own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
       own_window_title = 'clicky',
 
@@ -52,8 +52,8 @@ conky.config = {
 	    default_color = '#FFFFFF',
 
       --own_window_transparent yes
-	    own_window_colour = '#000000',
-	    minimum_width = 400, minimum_height = 700,
+	    own_window_colour = '#00322F',
+	    minimum_width = 400, minimum_height = 600,
 
       --CORRECT THIS PATH
       lua_load = '~/.conky/minsysmon/clocks.lua',
@@ -75,8 +75,9 @@ conky.text = [[
  ${offset 45}${voffset 10}${font Roboto-Regular:size=12}${color #DBA9CE}TDown   ${color #47D1D5}${totaldown wlp5s0}
 
 
-  ${offset 75}${voffset 60}${font Roboto-Regular:size=15}${color #C6ACC9}CPU
-  ${offset 228}${voffset 1}${color #C1D1FD}${exec sensors | grep 'Core 0' | cut -c18-19}°C      ${exec sensors | grep 'Core 1' | cut -c18-19}°C 
+  ${offset 75}${voffset 63}${font Roboto-Regular:size=15}${color #C6ACC9}CPU
+  ${offset 133}${voffset -8}$cpu%
+  ${offset 228}${voffset -20}${color #C1D1FD}${exec sensors | grep 'Core 0' | cut -c18-19}°C      ${exec sensors | grep 'Core 1' | cut -c18-19}°C 
   ${offset 234}${voffset 15}${color #ECB4BF}${font Roboto-Regular:size=8}Core 0
   ${offset 307}${voffset -15}Core 1
 

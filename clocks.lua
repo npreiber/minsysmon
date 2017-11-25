@@ -352,6 +352,8 @@ end
   --draw GPU lines
   DrawLine(cr, 0, 709, 326, 0, 4)
   DrawLine(cr, 326, 707, 0, 23, 4)
-
+  --Draw frame lines 
+  DrawLine(cr, 0, 910, 455, 0, 4)
+  DrawLine(cr, 453, 910, 0, -880, 4)
   draw_clock_hands(cr, clock_x,clock_y)
   end
