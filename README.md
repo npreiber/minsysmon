@@ -14,4 +14,4 @@ A Simple Conky config
   
 Note: If Core temps are not displayed correctly, see line 278 clocks.lua 
 
-![alt text](https://raw.githubusercontent.com/NoTranslation/Conky-Minimalism/master/example.png)
+![alt text](https://raw.githubusercontent.com/npreiber/minsysmon/master/example.png)
