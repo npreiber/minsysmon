@@ -1,0 +1,97 @@
+conky.config = {
+  -- -- Conky settings -- #
+	    background = true,
+	    update_interval = 1,
+
+	    cpu_avg_samples = 1,
+	    net_avg_samples = 2,
+
+	    override_utf8_locale = true,
+
+	    double_buffer = true,
+	    no_buffers = true, 
+      text_buffer_size = 32768,
+      imlib_cache_size = 0,
+
+  -- -- Window specifications -- #
+	    own_window = true,
+      own_window_type = 'dock',
+      own_window_argb_visual = true,
+      own_window_argb_value = 0,
+	    own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
+      own_window_title = 'clicky',
+
+	    border_inner_margin = 50,
+	    border_outer_margin = 0,
+
+	-- Conky on second monitor
+	    xinerama_head = 2,
+
+
+  --minimum_size 1100 700
+	    maximum_width = 700,
+
+	    alignment = 'top_right',
+	    gap_x = 0,
+	    gap_y = 90,
+
+  -- -- Graphics settings -- #
+	    draw_shades = false,
+	    draw_outline = false,
+	    draw_borders = false,
+	    draw_graph_borders = false,
+
+  -- -- Text settings -- #
+	    use_xft = true,
+	    font = 'Ubuntu Mono:size=10',
+	    xftalpha = 0.8,
+      --Ícones: ${font Conky Icons by Carelli:size=14}
+
+	    uppercase = false,
+
+	    default_color = '#FFFFFF',
+
+      --own_window_transparent yes
+	    own_window_colour = '#000000',
+	    minimum_width = 400, minimum_height = 700,
+
+      --CORRECT THIS PATH
+      lua_load = '~/.conky/minsysmon/clocks.lua',
+      lua_draw_hook_pre = 'clock_rings',
+      --lua_load = '~/.conky/minsysmon/clicky.lua',
+      --lua_draw_hook_pre = 'main',
+};
+
+conky.text = [[
+
+  ${voffset -32}${offset 165}${color #C6ACC9}${font Roboto-Regular:size=20}${time %H:%M} ${exec date +%A}
+  ${voffset 8}${offset 165}${color #D87680}${font Roboto-Regular:size=18}${exec date +%d.%B.%Y | sed 's/^.\| [a-z]/\U&/g'}
+  
+  ##Replace 'wlp5s0' with name of your network interface
+ ${offset 30}${voffset 40}${color #8699D1}${font Roboto-Medium:size=17}Dw ${downspeedgraph wlp5s0 26,80 A7E4AE 8699D1}
+ ${offset 95}${voffset -10}${color #DBA9CE}${font Roboto-Regular:size=8}${downspeed wlp5s0}
+ ${offset 47}${voffset 0}${color #8699D1}${font Roboto-Medium:size=17}Up ${upspeedgraph wlp5s0 26,80 A7E4AE 8699D1}
+ ${offset 95}${voffset -10}${color #DBA9CE}${font Roboto-Regular:size=8}${upspeed wlp5s0}
+ ${offset 45}${voffset 10}${font Roboto-Regular:size=12}${color #DBA9CE}TDown   ${color #47D1D5}${totaldown wlp5s0}
+
+
+  ${offset 75}${voffset 60}${font Roboto-Regular:size=15}${color #C6ACC9}CPU
+  ${offset 228}${voffset 1}${color #C1D1FD}${exec sensors | grep 'Core 0' | cut -c18-19}°C      ${exec sensors | grep 'Core 1' | cut -c18-19}°C 
+  ${offset 234}${voffset 15}${color #ECB4BF}${font Roboto-Regular:size=8}Core 0
+  ${offset 307}${voffset -15}Core 1
+
+  ${offset 102}${voffset 1}${color #8699D1}${font Roboto-Regular:size=11}$swap / $swapmax
+  ${offset 100}${color #A7E4AE}$mem / $memmax
+  ${offset 90}  ${color #FDF3B8}${fs_used /} / ${fs_size /}
+  ${offset 175}${color #D87680}[$memperc%]
+  ${offset 205}${voffset 2}${color #C6ACC9}${font Roboto-Bold:size=14}MEM
+  
+
+  ${offset 105}${voffset 60} ${color #8699d1}GPU Usage:  ${exec nvidia-smi | grep % | cut -c 62-63} %
+  ${offset 110}${color #47d1d5}GPU VRAM:  ${exec nvidia-smi | grep % | cut -c 37-40}MB/${exec nvidia-smi | grep % | cut -c 48-51}MB
+  ${offset 111}${color #dba9ce}GPU Temp:   ${exec nvidia-smi | grep % | cut -c 9-10}°C
+  
+  ##CORRECT THIS PATH
+  ${image ~/.conky/minsysmon/wifi.png -p 210,100 -s 170x170}
+
+]];
